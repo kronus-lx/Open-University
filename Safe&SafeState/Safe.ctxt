@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Safe
+comment0.text=\n\ Class\ 'Safe'\ for\ containing\ a\ number\ of\ limited\ items\n\n\ @author\ Joel\ Manning\n\ @version\ 31-10-2023\n
+comment1.params=aMaxItems
+comment1.target=Safe(int)
+comment1.text=\n\ part(c)(i,ii,iii)\ \n
+comment2.params=item
+comment2.target=void\ addToContents(java.lang.String)
+comment2.text=\n\ part(d)\ Attempt\ to\ add\ contents\n
+comment3.params=item
+comment3.target=void\ removeFromContents(java.lang.String)
+comment3.text=\n\ part(e)\ remove\ an\ item\ from\ contents\n
+comment4.params=
+comment4.target=void\ display()
+comment4.text=\n\ part(f)\ Display\ all\ item\ contents\ \n
+comment5.params=
+comment5.target=void\ empty()
+comment5.text=\n\ part(g)\ Empty\ method\ to\ clear\ the\ array\ list\n
+numComments=6

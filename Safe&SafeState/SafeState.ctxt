@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=SafeState
+comment0.text=\n\ SafeState\ Class\ -\ SafeState\ Managers\ the\ State\ of\ Class\ Safe\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enabling\ Users\ to\ Set/Get\ the\ current\ State\ of\ a\ Safe\ \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Object\n\n\ @author\ Joel\ Manning\n\ @version\ 23-10-2023\n
+comment1.params=
+comment1.target=SafeState()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SafeState\n
+comment2.params=
+comment2.target=java.lang.String\ getDisplay()
+comment2.text=\n\ (d)(part\ i)Method\ for\ retrieving\ display\ field\ value\n
+comment3.params=
+comment3.target=boolean\ isOpen()
+comment3.text=\n\ (d)(part\ ii)Method\ for\ retrieving\ open\ field\ value\n
+comment4.params=aCode
+comment4.target=boolean\ open(java.lang.String)
+comment4.text=\n\ (e)\ Method\ for\ opening\ the\ safe\n
+comment5.params=aCode
+comment5.target=boolean\ isValidUserCode(java.lang.String)
+comment5.text=\n\ (f)\ Method\ for\ checking\ a\ valid\ code\ for\ new\ user\ code\n
+comment6.params=aCode
+comment6.target=boolean\ lock(java.lang.String)
+comment6.text=\n\ (g)\ Method\ to\ lock\ the\ Safe\ Providing\ Correct\ String\ has\ been\ entered\n
+comment7.params=
+comment7.target=java.lang.String\ about()
+comment7.text=\n\ (h)\ Display\ the\ current\ status\ of\ the\ Safe\n
+numComments=8
