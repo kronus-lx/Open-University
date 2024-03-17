@@ -51,7 +51,7 @@ public interface Workshop {
      * @param end
      * @return
      */
-    public <T> ArrayList<T> itemsBetweenRange(int start, int end); 
+    public <T> ArrayList<T> itemsBetweenRange(long start, long end); 
 
     /**
      * @brief (vii) return items that were serviced post audit

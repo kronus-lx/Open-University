@@ -22,17 +22,18 @@ public abstract class Machine implements Item {
      * @brief private fields 
     */
     private String machineUuid;
+    
     private long lastServiceDate;
+    
     private MachineType type;
-    private final long companyStartupDate = 947089800;
+    
+    protected final long companyStartupDate = 947089800;
 
     /**
-     * @brief 
+     * @brief Protected Method to gen a uuid
     */
-    public Machine(){
-        /**
-         * Generate UUID
-        */
+    protected String generateUuid(){
+        
         String hex = "0123456789Aabcdef";
         
         final int uuid_max_length = 36;
@@ -48,19 +49,45 @@ public abstract class Machine implements Item {
                 uuid.append(hex.charAt(rand.nextInt(16)));
             }
         }
-        this.machineUuid = uuid.toString();
-        /*
-         * Generate a last service date
-        */
-        this.lastServiceDate = rand.nextLong(
+        return uuid.toString();
+    }
+
+    /**
+     * @brief protected method to generate a Service Date
+     * @return
+     */
+    protected long generateLastServiceDate(){
+        Random rand = new Random(System.currentTimeMillis());
+        long date = rand.nextLong(
             (System.currentTimeMillis() - companyStartupDate) + 1) 
                     + companyStartupDate;
-        /**
-         * Assign a random type
-        */
+        return date;
+    }
+
+    private MachineType generateMachineType(){
+
+        Random rand = new Random(System.currentTimeMillis());
+
         MachineType[] machines = MachineType.values();
 
-        this.type = machines[rand.nextInt(machines.length)];
+        MachineType t = machines[rand.nextInt(machines.length)];
+
+        return t;
+    }
+
+    public Machine(){
+        /**
+         * @brief Generate and Assign an uuid
+        */
+        this.machineUuid = this.generateUuid();
+        /**
+         * Assign a random service date
+        */
+        this.lastServiceDate = this.generateLastServiceDate();
+        /**
+         * Set a type
+        */
+        this.type = this.generateMachineType();
     }
     /**
      * @brief returns the machine uuid

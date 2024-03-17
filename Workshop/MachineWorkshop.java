@@ -2,6 +2,23 @@ package TMA03Q1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.File;
+
+/**
+ * @brief file handler for reporting
+*/
+class FileHandler
+{
+    private String fileName;
+    private File handler; 
+    
+    public FileHandler(String fname)
+    {
+        this.fileName = fname;
+        this.handler = new File(fname);
+    }
+
+}
 
 public class MachineWorkshop implements Workshop
 {
@@ -23,9 +40,10 @@ public class MachineWorkshop implements Workshop
 
     /**
      * @brief (i) Add Item to Workshop
-     * @param <T>
+     * @param <Machine>
      * @param item
     */
+    @Override
     public <Machine> void add(Machine item){
 
     }
@@ -33,6 +51,7 @@ public class MachineWorkshop implements Workshop
     /**
      * @brief (ii) clear all items
     */
+    @Override
     public void clear()
     {
 
@@ -41,6 +60,7 @@ public class MachineWorkshop implements Workshop
     /**
      * @brief (iii) populate with test data
     */
+    @Override
     public void populate()
     {
 
@@ -48,11 +68,12 @@ public class MachineWorkshop implements Workshop
 
     /**
      * @brief (iv) remove item from map using Id
-     * @param <T>
+     * @param <Integer>
      * @param id
      * @return
     */
-    public <T> boolean remove(T id)
+    @Override
+    public <Integer> boolean remove(Integer id)
     {
         return false;
     }
@@ -63,19 +84,21 @@ public class MachineWorkshop implements Workshop
      * @param item
      * @param date
      */
+    @Override
     public <Machine> void updateServiceDate(Machine item, String date)
     {
         
     }
 
     /**
-     * @brief (vi) return a ArrayList of Items that are between range
-     * @param <T>
+     * @brief (vi) return a ArrayList of Items that are between range of given utc times
+     * @param <Machine>
      * @param start
      * @param end
      * @return
      */
-    public <Machine> ArrayList<Machine> itemsBetweenRange(int start, int end)
+    @Override
+    public <Machine> ArrayList<Machine> itemsBetweenRange(long start, long end)
     {
         ArrayList<Machine> macArrayList = new ArrayList<Machine>();
 
@@ -86,6 +109,7 @@ public class MachineWorkshop implements Workshop
      * @brief (vii) return items that were serviced post audit
      * @return items that were serviced post audit
      */
+    @Override
     public int itemsPostAudit()
     {
         return 0;
@@ -94,8 +118,16 @@ public class MachineWorkshop implements Workshop
     /**
      * @brief (viii) display all items logged
      */
+    @Override
     public void display()
     {
+
+    }
+    /**
+     * @brief Write Contents to CSV File
+     * @param fname
+    */
+    public void writeCSVFile(String fname){
 
     }
 }
