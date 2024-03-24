@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Club
+comment0.text=\n\ @brief\ Interface\ for\ a\ Workshop\ Class\n
+comment1.params=
+comment1.target=void\ clear()
+comment1.text=\n\ @brief\ (ii)\ clear\ all\ items\n
+comment2.params=
+comment2.target=void\ populate()
+comment2.text=\n\ @brief\ (iii)\ populate\ with\ test\ data\n
+comment3.params=id
+comment3.target=boolean\ remove(java.lang.Object)
+comment3.text=\n\ @brief\ (iv)\ remove\ item\ from\ map\ using\ Id\n\ @param\ <T>\n\ @param\ id\n\ @return\n
+comment4.params=item\ date
+comment4.target=void\ updateServiceDate(java.lang.Object,\ java.lang.String)
+comment4.text=\n\ @brief\ (v)\ update\ field\ from\ item\n\ @param\ <T>\n\ @param\ item\n\ @param\ date\n
+comment5.params=start\ end
+comment5.target=java.util.ArrayList\ itemsBetweenRange(long,\ long)
+comment5.text=\n\ @brief\ (vi)\ return\ a\ ArrayList\ of\ Items\ that\ are\ between\ range\n\ @param\ <T>\n\ @param\ start\n\ @param\ end\n\ @return\n
+comment6.params=
+comment6.target=int\ itemsPostAudit()
+comment6.text=\n\ @brief\ (vii)\ return\ items\ that\ were\ serviced\ post\ audit\n\ @return\ items\ that\ were\ serviced\ post\ audit\n
+comment7.params=
+comment7.target=void\ display()
+comment7.text=\n\ @brief\ (viii)\ display\ all\ items\ logged\n
+numComments=8
