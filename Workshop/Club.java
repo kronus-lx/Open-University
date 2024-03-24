@@ -6,18 +6,7 @@ import java.util.ArrayList;
 /**
  * @brief Interface for a Workshop Class
 */
-public interface Workshop {
-    
-    //public int totalItems = 0;
-
-    //public static final int auditDate = 1672556400;
-    /**
-     * @brief (i) Add Item to Workshop
-     * @param <T>
-     * @param item
-    */
-    public <T> void add(T item);
-    
+public interface Club {
     /**
      * @brief (ii) clear all items
     */

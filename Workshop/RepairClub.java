@@ -2,6 +2,7 @@ package TMA03Q1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.io.File;
 
 /**
@@ -20,32 +21,53 @@ class FileHandler
 
 }
 
-public class MachineWorkshop implements Workshop
+public class RepairClub implements Club
 {
     /**
      * @brief Total Items to be static across all objects
     */
-    private static int totalItems = 0;
+    private static int totalMachines;
     /**
      * @brief Contain all Items
     */
-    private HashMap<Integer, Machine> workshopItems; 
+    private HashMap<Item, List<String>> clubItems; 
 
     /**
-     * Initialise
+     * @brief Initialise private fields
     */
-    public MachineWorkshop(){
-        workshopItems = new HashMap<>();
+    public RepairClub()
+    {
+        workshopItems = new HashMap<Machine, ArrayList>();
+        totalMachines = 0;
     }
 
     /**
      * @brief (i) Add Item to Workshop
-     * @param <Machine>
-     * @param item
     */
-    @Override
-    public <Machine> void add(Machine item){
+    private void add()
+    {
+       Item machine = new Machine(); 
 
+       List<String> properties = new ArrayList<String>();
+       
+       if(machine.type() == "Computer"){
+            Computer computer = new Computer(machine);
+
+            properties.add(computer.type());
+            properties.add(computer.uuid());
+            properties.add(Integer.toString(computer.lastServiced()));
+            
+            clubItems.put(computer, properties);
+        }
+       else if(machine.type() == "Robot"){
+            Robot robot = new Robot(machine);
+
+            properties.add(robot.type());
+            properties.add(robot.uuid());
+            properties.add(Integer.toString(robot.lastServiced()));
+            
+            clubItems.put(robot, properties);
+       }
     }
     
     /**
@@ -54,7 +76,9 @@ public class MachineWorkshop implements Workshop
     @Override
     public void clear()
     {
-
+        if(!this.workshopItems.isEmpty()){
+            this.workshopItems.clear();
+        }
     }
     
     /**
@@ -63,24 +87,24 @@ public class MachineWorkshop implements Workshop
     @Override
     public void populate()
     {
-
+        this.clear();
     }
 
     /**
      * @brief (iv) remove item from map using Id
-     * @param <Integer>
+     * @param <Machine>
      * @param id
      * @return
     */
     @Override
-    public <Integer> boolean remove(Integer id)
+    public <Machine> boolean remove(Machine id)
     {
         return false;
     }
 
     /**
      * @brief (v) update field from item
-     * @param <T>
+     * @param <Machine>
      * @param item
      * @param date
      */
@@ -98,9 +122,9 @@ public class MachineWorkshop implements Workshop
      * @return
      */
     @Override
-    public <Machine> ArrayList<Machine> itemsBetweenRange(long start, long end)
+    public <Item> ArrayList<Item> itemsBetweenRange(long start, long end)
     {
-        ArrayList<Machine> macArrayList = new ArrayList<Machine>();
+        ArrayList<Item> macArrayList = new ArrayList<Machine>();
 
         return macArrayList;
     } 

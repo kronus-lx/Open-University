@@ -14,7 +14,7 @@ public interface Item {
      * @brief Type of Item
      * @return
      */
-    public String itemType();
+    public String type();
     
     /**
      * @brief last service of Machine

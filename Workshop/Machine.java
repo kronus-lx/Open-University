@@ -7,11 +7,7 @@ import java.util.Random;
 */
 enum MachineType {
     COMPUTER,
-    ROBOT,
-    TESTER,
-    CNC,
-    PLC,
-    Controller
+    ROBOT
 }
 
 /**
@@ -51,10 +47,9 @@ public abstract class Machine implements Item {
         }
         return uuid.toString();
     }
-
     /**
      * @brief protected method to generate a Service Date
-     * @return
+     * @return date
      */
     protected long generateLastServiceDate(){
         Random rand = new Random(System.currentTimeMillis());
@@ -63,16 +58,19 @@ public abstract class Machine implements Item {
                     + companyStartupDate;
         return date;
     }
-
+    /**
+     * @brief private method to generate a Service Date
+     * @return machine type
+     */
     private MachineType generateMachineType(){
 
         Random rand = new Random(System.currentTimeMillis());
 
         MachineType[] machines = MachineType.values();
 
-        MachineType t = machines[rand.nextInt(machines.length)];
+        MachineType type = machines[rand.nextInt(machines.length)];
 
-        return t;
+        return type;
     }
 
     public Machine(){
@@ -93,15 +91,16 @@ public abstract class Machine implements Item {
      * @brief returns the machine uuid
      * @return uuid of machine
     */
+    @Override
     public String uuid(){
         return this.machineUuid;
     }
-    
     /**
      * @brief returns the type of item
      * @reutrn item type
     */
-    public String itemType(){
+    @Override
+    public String type(){
 
         String itemTypeStr;
 
@@ -112,20 +111,8 @@ public abstract class Machine implements Item {
             case ROBOT:
                 itemTypeStr = "Robot";
                 break;
-            case TESTER:
-                itemTypeStr = "Tester";
-                break;
-            case CNC:
-                itemTypeStr = "CNC";
-                break;
-            case PLC:
-                itemTypeStr = "PLC";
-                break;
-            case Controller:
-                itemTypeStr = "Controller";
-                break;
             default:
-                itemTypeStr = "Unknown";
+                itemTypeStr = "Computer";
                 break;
         }
         return itemTypeStr;
@@ -134,6 +121,7 @@ public abstract class Machine implements Item {
      * @brief return the last service date
      * @return service date
     */
+    @Override
     public int lastServiced(){
         return Math.toIntExact(this.lastServiceDate);
     }
