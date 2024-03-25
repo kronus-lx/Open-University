@@ -1,11 +1,9 @@
- 
-
 import java.util.Random;
 
 /**
  * @brief Valid Machine Types
 */
-enum MachineType {
+enum MachineType{
     COMPUTER,
     ROBOT
 }
@@ -13,7 +11,7 @@ enum MachineType {
 /**
  * @brief Machine class of type Item
 */
-public abstract class Machine implements Item {
+public class Machine implements Item {
     /**
      * @brief private fields 
     */
@@ -48,18 +46,21 @@ public abstract class Machine implements Item {
         return uuid.toString();
     }
     /**
-     * @brief protected method to generate a Service Date
+     * @brief protected method to generate a service date in unix time
      * @return date
      */
     protected long generateLastServiceDate(){
+        
         Random rand = new Random(System.currentTimeMillis());
-        long date = rand.nextLong(
-            (System.currentTimeMillis() - companyStartupDate) + 1) 
-                    + companyStartupDate;
+        
+        long currentTime = (long)System.currentTimeMillis();
+        
+        long date = this.companyStartupDate+(long)(rand.nextDouble()*(currentTime-this.companyStartupDate+1));
+        
         return date;
     }
     /**
-     * @brief private method to generate a Service Date
+     * @brief private method to generate a new machine type
      * @return machine type
      */
     private MachineType generateMachineType(){

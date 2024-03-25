@@ -1,13 +1,10 @@
- 
-
 public class Computer extends Machine {
     /**
      * @brief private attributes
     */
     private String computerId;
     
-    private long lastServiceDate;
-        
+    private long lastServiceDate;    
     /**
      * @brief Copy Contructor for a machine object
      * @param Machine object
@@ -17,6 +14,10 @@ public class Computer extends Machine {
         if(machine.type() == "Computer"){
             this.lastServiceDate = machine.lastServiced();
             this.computerId = machine.uuid();
+        }
+        else {
+            this.computerId = super.generateUuid();
+            this.lastServiceDate = super.generateLastServiceDate();
         }
     }
     /**
@@ -50,4 +51,6 @@ public class Computer extends Machine {
     {
         return Math.toIntExact(this.lastServiceDate);
     }
+    
+    
 }

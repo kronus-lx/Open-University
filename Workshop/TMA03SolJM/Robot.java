@@ -1,5 +1,3 @@
- 
-
 public class Robot extends Machine {
     /**
      * @brief private attributes
@@ -17,6 +15,10 @@ public class Robot extends Machine {
         if(machine.type() == "Robot"){
             this.lastServiceDate = machine.lastServiced();
             this.robotId = machine.uuid();
+        }
+        else{
+            this.robotId = super.generateUuid();
+            this.lastServiceDate = super.generateLastServiceDate();
         }
     }
     /** 

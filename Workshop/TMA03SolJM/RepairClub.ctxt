@@ -1,0 +1,34 @@
+#BlueJ class context
+comment0.target=RepairClub
+comment0.text=\nclass\ FileHandler\n{\n\ \ \ \ private\ String\ fileName;\n\ \ \ \ private\ File\ handler;\ \n\ \ \ \ \n\ \ \ \ public\ FileHandler(String\ fname)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ this.fileName\ \=\ fname;\n\ \ \ \ \ \ \ \ this.handler\ \=\ new\ File(fname);\n\ \ \ \ }\n}\n
+comment1.params=
+comment1.target=RepairClub()
+comment1.text=\n\ @brief\ Initialise\ private\ fields\n
+comment10.params=fname
+comment10.target=void\ writeCSVFile(java.lang.String)
+comment10.text=\n\ @brief\ Write\ Contents\ to\ CSV\ File\n\ @param\ fname\n
+comment2.params=
+comment2.target=void\ add()
+comment2.text=\n\ @brief\ (i)\ Add\ Item\ to\ Workshop\n
+comment3.params=
+comment3.target=void\ clear()
+comment3.text=\n\ @brief\ (ii)\ clear\ all\ items\n
+comment4.params=
+comment4.target=void\ populate()
+comment4.text=\n\ @brief\ (iii)\ populate\ with\ test\ data\n
+comment5.params=uuid
+comment5.target=boolean\ remove(java.lang.Object)
+comment5.text=\n\ @brief\ (iv)\ remove\ item\ from\ map\ using\ Id\n\ @param\ <String>\n\ @param\ id\n\ @return\n
+comment6.params=item\ date
+comment6.target=void\ updateServiceDate(java.lang.Object,\ java.lang.String)
+comment6.text=\n\ @brief\ (v)\ update\ field\ from\ item\n\ @param\ <Machine>\n\ @param\ item\n\ @param\ date\n
+comment7.params=start\ end
+comment7.target=java.util.ArrayList\ itemsBetweenRange(long,\ long)
+comment7.text=\n\ @brief\ (vi)\ return\ a\ ArrayList\ of\ Items\ that\ are\ between\ range\ of\ given\ utc\ times\n\ @param\ <Machine>\n\ @param\ start\n\ @param\ end\n\ @return\n
+comment8.params=
+comment8.target=int\ itemsPostAudit()
+comment8.text=\n\ @brief\ (vii)\ return\ items\ that\ were\ serviced\ post\ audit\n\ @return\ items\ that\ were\ serviced\ post\ audit\n
+comment9.params=
+comment9.target=void\ display()
+comment9.text=\n\ @brief\ (viii)\ display\ all\ items\ logged\n
+numComments=11
