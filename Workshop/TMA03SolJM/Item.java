@@ -20,5 +20,5 @@ public interface Item {
      * @brief last service of Machine
      * @return
      */
-    public int lastServiced();
+    public long lastServiced();
 }

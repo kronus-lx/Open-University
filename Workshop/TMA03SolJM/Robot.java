@@ -48,8 +48,8 @@ public class Robot extends Machine {
      * @return last service date of robot in unix time
      */
     @Override
-    public int lastServiced()
+    public long lastServiced()
     {
-        return Math.toIntExact(this.lastServiceDate);
+        return this.lastServiceDate;
     }
 }

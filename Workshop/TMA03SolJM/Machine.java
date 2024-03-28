@@ -123,7 +123,7 @@ public class Machine implements Item {
      * @return service date
     */
     @Override
-    public int lastServiced(){
-        return Math.toIntExact(this.lastServiceDate);
+    public long lastServiced(){
+        return this.lastServiceDate;
     }
 }
