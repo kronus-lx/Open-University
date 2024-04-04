@@ -15,13 +15,13 @@ public class Machine implements Item {
     /**
      * @brief private fields 
     */
-    private String machineUuid;
+    private String machineUuid; // UUID of Machine
     
-    private long lastServiceDate;
+    private long lastServiceDate; // Last Date serviced UNIX TIME
     
-    private MachineType type;
+    private MachineType type; // Type of machine
     
-    protected final long companyStartupDate = 947089800;
+    protected final static long commissionDate = 947089800L;
 
     /**
      * @brief Protected Method to gen a uuid
@@ -45,25 +45,44 @@ public class Machine implements Item {
         }
         return uuid.toString();
     }
+
     /**
      * @brief protected method to generate a service date in unix time
      * @return date
      */
-    protected long generateLastServiceDate(){
+    public static long getCommissionDate()
+    {
+        return commissionDate;
+    }
+
+    /**
+     * @brief protected method to generate a service date in unix time
+     * @return date
+     */
+    protected long generateLastServiceDate()
+    {
+        Random rand = new Random();
+
+        long currentTime = System.currentTimeMillis();
+
+        long dateRange = currentTime - lastServiceDate;
         
-        Random rand = new Random(System.currentTimeMillis());
-        
-        long currentTime = (long)System.currentTimeMillis();
-        
-        long date = this.companyStartupDate+(long)(rand.nextDouble()*(currentTime-this.companyStartupDate+1));
-        
-        return date;
+        long offset = (long)(rand.nextDouble() * dateRange);
+
+        if(offset < lastServiceDate){
+            do {
+                offset = (long)(rand.nextDouble() * dateRange);
+            }
+            while(offset < lastServiceDate);
+        }
+        return lastServiceDate + offset;
     }
     /**
      * @brief private method to generate a new machine type
      * @return machine type
      */
-    private MachineType generateMachineType(){
+    private MachineType generateMachineType()
+    {
 
         Random rand = new Random(System.currentTimeMillis());
 
@@ -93,15 +112,17 @@ public class Machine implements Item {
      * @return uuid of machine
     */
     @Override
-    public String uuid(){
+    public String uuid()
+    {
         return this.machineUuid;
     }
     /**
      * @brief returns the type of item
-     * @reutrn item type
+     * @return item type
     */
     @Override
-    public String type(){
+    public String type()
+    {
 
         String itemTypeStr;
 
@@ -123,7 +144,8 @@ public class Machine implements Item {
      * @return service date
     */
     @Override
-    public long lastServiced(){
+    public long lastServiced()
+    {
         return this.lastServiceDate;
     }
 }

@@ -26,9 +26,9 @@ public interface Club {
      * @brief (v) update field from item
      * @param <T>
      * @param item
-     * @param date
+     * @param long date
      */
-    public <T> void updateServiceDate(T item, String date);
+    public <T> void updateServiceDate(T item, long date);
 
     /**
      * @brief (vi) return a ArrayList of Items that are between range
@@ -37,7 +37,7 @@ public interface Club {
      * @param end
      * @return
      */
-    public <T> ArrayList<T> itemsBetweenRange(long start, long end); 
+    public <T> ArrayList<T> itemsServicedPostTime(long time, Class<T> cl); 
 
     /**
      * @brief (vii) return items that were serviced post audit
