@@ -7,11 +7,17 @@ public class Main
         /**
          * @brief New Instance of RepairClub  
          */ 
-        Club mClub = new RepairClub();
+        ItemClub mClub = new RepairClub();
         /**
          * @brief Populate RepairClub with Machines
          */ 
         mClub.populate();
+
+        /*
+         * @brief Test for successful population (10 entries)
+         */
+        System.out.println(mClub.totalNumOfItems());
+
         /**
          * @brief Display all the devices in the repair shop
          */ 

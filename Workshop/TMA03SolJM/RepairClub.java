@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RepairClub implements Club
+public class RepairClub implements ItemClub
 {
     /**
      * @brief Total Items to be static across all objects
