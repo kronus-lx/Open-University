@@ -1,22 +1,7 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * @brief file handler for reporting
-*/
-/*
-class FileHandler
-{
-    private String fileName;
-    private File handler; 
-    
-    public FileHandler(String fname)
-    {
-        this.fileName = fname;
-        this.handler = new File(fname);
-    }
-}
-*/
 public class RepairClub implements Club
 {
     /**
@@ -192,12 +177,12 @@ public class RepairClub implements Club
         }
         catch(IndexOutOfBoundsException e)
         {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             return new ArrayList<>();
         }
         catch(ClassCastException e)
         {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             return new ArrayList<>();
         }
         return machineList;
@@ -210,7 +195,25 @@ public class RepairClub implements Club
     @Override
     public int itemsPostAudit()
     {
-        return 0;
+        int postAuditItems = 0;
+
+        try
+        {
+            for(ArrayList<String> i : this.clubItems.values())
+            {
+                if(Long.parseLong(i.get(2)) > this.auditDate )
+                {
+                    postAuditItems++;
+                }
+            }
+            
+            return postAuditItems;
+        }
+        catch(ArrayIndexOutOfBoundsException ex)
+        {
+            System.err.println(ex.getMessage());
+            return -1;
+        }
     }
 
     /**
@@ -232,9 +235,34 @@ public class RepairClub implements Club
     /**
      * @brief Write Contents to CSV File
      * @param fname
+     * @throws Exception 
+     * @throws IOException 
     */
-    public void writeCSVFile(String fname)
+    public boolean writeCSVFile(String path, String fname) throws IOException, Exception
     {
-        ;
+        boolean state = false;
+
+        for( ArrayList<String> i : this.clubItems.values() )
+        {
+            try( FileHandler handler = FileHandler.csvFileHandler(path, fname))
+            {
+                state = handler.write(String.join(" ",i));
+                if(!state) break;
+            }
+            catch(IOException ex)
+            {
+                System.err.println(ex.getMessage());
+                return false;
+            }
+        }
+        return state;
+    }
+
+    /*
+     * @brief return total number of items (TESTING!!)
+     */
+    public int totalNumOfItems()
+    {
+        return totalItems;
     }
 }

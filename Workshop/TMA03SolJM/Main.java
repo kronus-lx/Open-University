@@ -35,5 +35,10 @@ public class Main
         long newServiceDate = 1712243166;
         mClub.updateServiceDate(toBeUpdated, newServiceDate);
         mClub.display();
+        /**
+         * @brief Return the number of items that were serviced post audit date
+        */
+        int numberOfItems = mClub.itemsPostAudit();
+        System.out.println("Items serviced post audit date: " + Integer.toString(numberOfItems));
     }
 }
