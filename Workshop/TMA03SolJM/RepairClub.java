@@ -244,15 +244,10 @@ public class RepairClub implements Club
 
         for( ArrayList<String> i : this.clubItems.values() )
         {
-            try( FileHandler handler = FileHandler.csvFileHandler(path, fname))
+            try( FileHandler handler = FileHandler.csvFileHandler(path, fname) )
             {
                 state = handler.write(String.join(" ",i));
                 if(!state) break;
-            }
-            catch(IOException ex)
-            {
-                System.err.println(ex.getMessage());
-                return false;
             }
         }
         return state;
