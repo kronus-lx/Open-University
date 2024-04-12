@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -6,20 +7,17 @@ import java.io.IOException;
 import java.io.Closeable;
 
 public abstract class FileHandler implements Closeable
-{
-    private String filePath;
-    
+{    
     private String fileName;
 
-    public FileHandler(String path, String fname)
+    public FileHandler(String fname)
     {
-        this.filePath = path;
         this.fileName = fname;
     }
 
-    public static FileHandler csvFileHandler(String path, String fname) throws IOException, Exception
+    public static FileHandler csvFileHandler(String fname) throws IOException, FileNotFoundException
     {
-        FileHandler csv = new CSVHandler(path, fname);
+        FileHandler csv = new CSVHandler(fname);
 
         return csv;
     }
@@ -30,7 +28,7 @@ public abstract class FileHandler implements Closeable
 
     public String filePath() 
     {
-        return new File(this.filePath, this.fileName).getAbsolutePath();
+        return new File(this.fileName).getAbsolutePath();
     }
 
     public String filename()
@@ -46,11 +44,11 @@ class CSVHandler extends FileHandler
 {
     private File handler;
     
-    public CSVHandler(String path, String fname)
+    public CSVHandler(String fname)
     {
-        super(path, fname);
+        super(fname);
 
-        this.handler = new File(path, fname);
+        this.handler = new File(fname);
         
         if(this.handler == null){
             throw new IllegalArgumentException("[ERROR]: Invalid Path Assigned to FileHandler");

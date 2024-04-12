@@ -238,24 +238,24 @@ public class RepairClub implements ItemClub
      * @throws Exception 
      * @throws IOException 
     */
-    public boolean writeCSVFile(String path, String fname) throws IOException, Exception
+    @Override
+    public boolean writeCSVFile(String fname) throws IOException, Exception
     {
         boolean state = false;
 
         for( ArrayList<String> i : this.clubItems.values() )
         {
-            try( FileHandler handler = FileHandler.csvFileHandler(path, fname) )
+            try( FileHandler handler = FileHandler.csvFileHandler(fname) )
             {
-                state = handler.write(String.join(" ",i));
+                state = handler.write(String.join(",",i));
                 if(!state) break;
             }
         }
         return state;
     }
-
     /*
-     * @brief return total number of items (TESTING!!)
-     */
+    * @brief return total number of items (TESTING!!)
+    */
     public int totalNumOfItems()
     {
         return totalItems;

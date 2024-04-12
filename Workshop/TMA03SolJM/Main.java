@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main 
@@ -45,6 +46,18 @@ public class Main
          * @brief Return the number of items that were serviced post audit date
         */
         int numberOfItems = mClub.itemsPostAudit();
-        System.out.println("Items serviced post audit date: " + Integer.toString(numberOfItems));
+        System.out.println("Items serviced post audit date: " + Integer.toString(numberOfItems));       
+        /**
+         * @brief Write to CSV FILE
+        */
+        try {
+            mClub.writeCSVFile("stuff.csv");
+        }
+        catch(IOException ex){
+            System.err.println(ex.getMessage());
+        }
+        catch(Exception ex){
+            System.err.println(ex.getMessage());
+        }
     }
 }
