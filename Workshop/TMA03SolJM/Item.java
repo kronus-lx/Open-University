@@ -21,4 +21,15 @@ public interface Item {
      * @return
      */
     public long lastServiced();
+
+    /**
+     * @brief Set Last Serviced
+     * @param New Item Service Date
+     */
+    public void newServiceDate(long serviceDate);
+
+    /**
+     * @brief Compare two Items with a UUID
+     */
+    public boolean compareTo(String objectUUID);
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * @brief Interface for a Workshop Class
 */
-public interface ItemClub {
+public interface Club {
     /**
      * @brief (ii) clear all items
     */

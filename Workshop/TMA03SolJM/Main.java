@@ -8,7 +8,7 @@ public class Main
         /**
          * @brief New Instance of RepairClub  
          */ 
-        ItemClub mClub = new RepairClub();
+        Club mClub = new RepairClub();
         /**
          * @brief Populate RepairClub with Machines
          */ 
