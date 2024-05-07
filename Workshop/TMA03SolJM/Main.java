@@ -51,7 +51,7 @@ public class Main
          * @brief Write to CSV FILE
         */
         try {
-            mClub.writeCSVFile("stuff.csv");
+            mClub.writeCSVFile("clubMachines.csv");
         }
         catch(IOException ex){
             System.err.println(ex.getMessage());

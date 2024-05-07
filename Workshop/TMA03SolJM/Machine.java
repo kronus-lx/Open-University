@@ -2,6 +2,9 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * @brief Valid Machine Types
 */
@@ -9,6 +12,10 @@ enum MachineType{
     COMPUTER,
     ROBOT
 }
+
+/**
+ * @brief Interface of an Item class
+*/
 
 /**
  * @brief Machine class of type Item
@@ -31,21 +38,8 @@ public class Machine extends Object implements Item  {
     */
     protected String generateUuid(){
         
-        String hex = "0123456789Aabcdef";
-        
-        final int uuid_max_length = 36;
-        
-        StringBuilder uuid = new StringBuilder();
-        
-        Random rand = new Random(System.currentTimeMillis());
-        
-        for(int i = 0; i < uuid_max_length; ++i){
-            if(i == 8 || i == 13 || i == 18 || i == 23){
-                uuid.append('-');
-            } else {
-                uuid.append(hex.charAt(rand.nextInt(16)));
-            }
-        }
+        UUID uuid = UUID.randomUUID();
+
         return uuid.toString();
     }
 
@@ -108,14 +102,11 @@ public class Machine extends Object implements Item  {
      */
     private MachineType generateMachineType()
     {
-
-        Random rand = new Random(System.currentTimeMillis());
-
         MachineType[] machines = MachineType.values();
+        
+        int randomIndex = ThreadLocalRandom.current().nextInt(machines.length);
 
-        MachineType type = machines[rand.nextInt(machines.length)];
-
-        return type;
+        return machines[randomIndex];
     }
 
     public Machine(){
@@ -148,7 +139,6 @@ public class Machine extends Object implements Item  {
     @Override
     public String type()
     {
-
         String itemTypeStr;
 
         switch (this.type) {
@@ -225,8 +215,6 @@ public class Machine extends Object implements Item  {
         return false;
     }
 
-
-
     /**
      * @brief return a string representation of an item
      * @return a string representation of the class
@@ -243,7 +231,7 @@ public class Machine extends Object implements Item  {
 
         if(this.lastServiceDate > 0)
         {
-            builder.append("\nService Date" + this.formattedServiceDate());
+            builder.append("\nService Date " + this.formattedServiceDate());
         }
 
         if(!this.type().isEmpty())
@@ -270,5 +258,115 @@ public class Machine extends Object implements Item  {
         {
             return false;
         }
+    }
+}
+
+class Computer extends Machine {
+    /**
+     * @brief private attributes
+    */
+    private String computerId;
+    
+    private long lastServiceDate;    
+    /**
+     * @brief Copy Contructor for a machine object
+     * @param Machine object
+    */
+    public Computer(Machine machine)
+    {
+        if(machine.type() == "Computer"){
+            this.lastServiceDate = machine.lastServiced();
+            this.computerId = machine.uuid();
+        }
+        else {
+            this.computerId = super.generateUuid();
+            this.lastServiceDate = super.generateLastServiceDate();
+        }
+    }
+    /**
+     * @brief Default Constructor
+    */
+    public Computer()
+    {
+        /**
+         * @brief Use parent classes methods to 
+         *        do the generation of unique attributes
+        */
+        this.computerId = super.generateUuid();
+        this.lastServiceDate = super.generateLastServiceDate();
+    }
+    /**
+     * @brief UUID of Item Object
+     * @return uuid of robot
+    */
+    @Override 
+    public String uuid()
+    {  
+        return this.computerId;
+    }
+
+    /**
+     * @brief last service of Machine
+     * @return last service date of robot in unix time
+     */
+    @Override
+    public long lastServiced()
+    {
+        return this.lastServiceDate;
+    }    
+}
+class Robot extends Machine {
+    /**
+     * @brief private attributes
+    */
+    private String robotId;
+    
+    private long lastServiceDate;
+        
+    /**
+     * @brief Copy Contructor for a machine object
+     * @param Machine object
+    */
+    public Robot(Machine machine)
+    {
+        if(machine.type() == "Robot"){
+            this.lastServiceDate = machine.lastServiced();
+            this.robotId = machine.uuid();
+        }
+        else{
+            this.robotId = super.generateUuid();
+            this.lastServiceDate = super.generateLastServiceDate();
+        }
+    }
+    /** 
+     * @brief Default constructor for Robot
+    */
+    public Robot()
+    {
+        /**
+         * @brief Use parent classes methods to 
+         *        do the generation of unique attributes
+        */
+        this.robotId = super.generateUuid();
+        this.lastServiceDate = super.generateLastServiceDate();
+    }
+    /**
+     * @brief UUID of Item Object
+     * @return uuid of robot
+    */
+    @Override 
+    public String uuid()
+    {  
+        return this.robotId;
+    }
+
+    /**
+     * @brief last service of Machine
+     * @return last service date of robot in unix time
+     */
+    @Override
+    public long lastServiced()
+    {
+        return this.lastServiceDate;
     }
 }
