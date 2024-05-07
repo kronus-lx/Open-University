@@ -14,10 +14,6 @@ enum MachineType{
 }
 
 /**
- * @brief Interface of an Item class
-*/
-
-/**
  * @brief Machine class of type Item
 */
 public class Machine extends Object implements Item  {

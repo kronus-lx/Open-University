@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.io.IOException;  
 import java.io.Closeable;
+import java.nio.charset.StandardCharsets;
 
 abstract class FileHandler implements Closeable
 {    
@@ -146,7 +148,11 @@ class CSVHandler extends FileHandler
                     System.err.println(ex.getMessage());
                 }
             } 
-            return Files.readString(Path.of(handler.getAbsolutePath()));
+            Path filePath = Paths.get(handler.getAbsolutePath());
+            
+            byte[] fileBytes = Files.readAllBytes(filePath);
+            
+            return new String(fileBytes,StandardCharsets.UTF_8);
         }
         catch(IOException ex)
         {
