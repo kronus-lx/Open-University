@@ -11,11 +11,22 @@ public interface Item {
     public String uuid();
     
     /**
+     * @brief set uuid
+     */
+    public void setUuid(String uuid);
+
+    /**
      * @brief Type of Item
      * @return
      */
     public String type();
     
+    /**
+     * @brief Set a type
+     * @return successful type assignment
+     */
+    public boolean setType(String type);
+
     /**
      * @brief last service of Machine
      * @return

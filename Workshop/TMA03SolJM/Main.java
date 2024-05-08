@@ -59,5 +59,7 @@ public class Main
         catch(Exception ex){
             System.err.println(ex.getMessage());
         }
+
+        System.out.println(mClub.recreateFirst("clubMachines.csv"));
     }
 }

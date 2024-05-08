@@ -60,4 +60,11 @@ public interface Club {
      * @brief Write to CSV File
      */
     public boolean writeCSVFile(String fname) throws IOException, Exception;
+
+    /**
+     * @brief recreate first class
+     * @param file
+     * @return
+     */
+    public String recreateFirst(String file);
 };

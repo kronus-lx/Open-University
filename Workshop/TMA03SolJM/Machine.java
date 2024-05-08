@@ -150,6 +150,41 @@ public class Machine extends Object implements Item  {
         }
         return itemTypeStr;
     }
+
+     /**
+     * @brief set uuid
+     */
+    @Override
+    public void setUuid(String uuid)
+    {
+        if(!uuid.isEmpty()){
+            this.machineUuid = uuid;
+        }
+    }
+
+    /**
+     * @brief Set a type
+     * @return successful type assignment
+     */
+    @Override
+    public boolean setType(String type)
+    {
+        if(type.equals(MachineType.COMPUTER.toString()))
+        {
+            this.type = MachineType.COMPUTER;
+            return true;
+        }
+        else if(type.equals(MachineType.ROBOT.toString()))
+        {
+            this.type = MachineType.ROBOT;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     /**
      * @brief return the last service date
      * @return service date

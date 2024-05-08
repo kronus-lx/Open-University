@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -438,5 +439,44 @@ public class RepairClub implements Club
     public int totalNumOfItems()
     {
         return totalItems;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String recreateFirst(String file)
+    {
+       Machine machine = new Machine();
+
+        try{
+            // Create a File Object
+            File object = new File(file);
+
+            // Create a Scanner Object
+            Scanner reader = new Scanner(object);
+
+            // Read the First Line of the CSV
+            String[] firstObject = reader.nextLine().split(",");
+
+            if(firstObject.length >= 3)
+            {
+                // Recreate the object using fields 
+                machine.setType(firstObject[0]);
+
+                machine.setUuid(firstObject[1]);
+
+                machine.newServiceDate(Long.parseLong(firstObject[2]));
+            } else {
+                System.out.println("[ERROR] Insufficient Properties\n");
+            }
+            // Close the IO Scanner Object
+            reader.close();
+        }
+        catch(FileNotFoundException ex){
+            System.out.println(ex);
+            ex.printStackTrace();
+        }
+        return machine.toString();
     }
 }
